@@ -3,7 +3,7 @@ Question:
 ----
 
 Implement a function that uses a word list
-to return the anagrams of a given word.
+to return the annograms of a given word.
 
 Answer:
 ----

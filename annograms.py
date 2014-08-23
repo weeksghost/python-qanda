@@ -1,23 +1,38 @@
 """
 
+Question:
+----
+
 Implement a function that uses a word list
 to return the anagrams of a given word.
+
+Answer:
+----
 
 """
 
 def annograms(word):
 
-    words = [w.rstrip() for w in open('WORD.LST')]
+    # For every string in WORD.LST return a copy of the string with trailing characters removed
+    # and assign it to the var 'words'
+    words = [ _.rstrip() for _ in open('WORD.LST')]
+
+    # Assign list of items in arg (word) to var sword
     sword = sorted(word)
-    annogram = [w for w in words if sorted(w) == sword]
+    # Ex: yard would now read: ['a', 'd', 'r', 'y']
+
+    # For each arg (word) passed into the function assign it to var 'annogram'
+    # if sorted items from 'WORD.LST' match sorted arg word
+    annogram = [ _ for _ in words if sorted(_) == sword ]
     if annogram:
         return annogram
     else:
         raise NotImplementedError
 
+
 if __name__ == "__main__":
 
-    print annograms("train")
+    print annograms("yard")
     print '--'
     print annograms('drive')
     print '--'

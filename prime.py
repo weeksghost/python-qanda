@@ -22,7 +22,7 @@ def is_prime(number):
         create a range of numbers
         2 through 95. If the remainder from
         dividing any number within the specified
-        range i.e. any number betwween 2 and 96
+        range i.e. any number betwween 2 and 95
         equals 0 then the number is not prime and
         our funtion returns False.
         '''

@@ -32,8 +32,10 @@ def is_prime(number):
     return True
 
 
-if __name__=='__main__':
+def get_primes(number):
+    while True:
+        if is_prime(number):
+            yield number
+        number += 1
 
-    rando = randint(2, 8999)
-    if is_prime(rando) == True:
-        print '%s is a prime number' % rando
+print get_primes(randint(2, 8999))

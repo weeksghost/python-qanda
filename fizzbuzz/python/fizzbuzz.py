@@ -5,15 +5,18 @@ For numbers which are multiples of both three and five print 'FizzBuzz'."""
 
 from random import randint
 
-num = randint(1, 100)
-
 def fizzbuzz(num):
   for x in range(1, 101):
-    print x
+    if x % 3 == 0:
+        print '%d --> Fizz' % x
+    if x % 5 == 0:
+        print '%d --> Buzz' % x
+    if x % 3 == 0 and x % 5 == 0:
+        print '%d --> FizzBuzz' % x
 
 
 def main():
-  fizzbuzz(num)
+  fizzbuzz(randint(1, 100))
 
 if __name__ == '__main__':
   main()

@@ -237,3 +237,54 @@ import codecs
 f = codecs.open('foo.txt', 'rU', 'utf-8')
 for line in f:
   # here line is a *unicode* string
+  
+  
+RANDOM:
+
+AND is higher precedence than OR in python and is evaluated first:
+
+x = True
+y = False
+z = False
+
+if x or y and z:
+    print "yes"
+else:
+    print "no"
+    
+#Result == yes AND is higher precedence than OR in python and is evaluated first
+
+NOT has first precedence, then AND, then OR
+
+x = True
+y = False
+z = False
+
+if not x or y:
+    print 1
+elif not x or not y and z:
+    print 2
+elif not x or y or not y and x:
+    print 3
+else:
+    print 4
+    
+# Result == 3 NOT has first precedence, then AND, then OR
+
+
+print r"\nwoow"
+
+Strings prefixed with the letter 'r' or 'R' a string literal becomes a raw string and the escape sequences such as \n are not converted.
+
+print "\x48\x49!" --> Hi!
+
+\x is an escape sequence that means the following 2 digits are a hexadicmal number encoding a character.
+
+
+Print all the ites in the list on a seperate line
+
+names = ['Ramesh', 'Rajesh', 'Roger', 'Ivan', 'Nico'
+
+There is a join method to string objects which takes an iterable object as parameter and combines the string calling the method in between each item to produce a resulting string:
+
+print "\n".join(names)

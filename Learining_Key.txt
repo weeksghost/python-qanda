@@ -86,7 +86,9 @@ DATA TYPES:
 
 tuple() —- A tuple consists of a number of values separated by commas
 
-set() —- Return a new set or frozenset object whose elements are taken from iterable. The elements of a set must be hashable
+set() —- Build an unordered collection of unique elements.
+
+  ex: nums = set([1,1,2,3,3,3,4]) == {1, 2, 3, 4}
 
 map() —- Apply function to every item of iterable and return a list of the results.
 

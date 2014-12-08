@@ -1,10 +1,8 @@
-from __future__ import print_function
 import random
 
-
 CELLS = [(0, 0), (0, 1), (0, 2),
-        (1, 0), (1, 1), (1, 2),
-        (2, 0), (2, 1), (2, 2)]
+         (1, 0), (1, 1), (1, 2),
+         (2, 0), (2, 1), (2, 2)]
 
 
 def get_locations():
@@ -29,6 +27,7 @@ def move_player(player, move):
     x -= 1
   elif move == 'DOWN':
     x += 1
+
   return x, y
 
 
@@ -64,7 +63,7 @@ def draw_map(player):
         print(tile.format('_|'))
 
 monster, door, player = get_locations()
-print("Welcome to the Dungeon")
+print("Welcome to the dungeon!")
 
 while True:
   moves = get_moves(player)
@@ -76,7 +75,7 @@ while True:
   print("You can move {}".format(moves))
   print("Enter QUIT to quit")
 
-  move = raw_input("> ")
+  move = input("> ")
   move = move.upper()
 
   if move == 'QUIT':
@@ -85,12 +84,12 @@ while True:
   if move in moves:
     player = move_player(player, move)
   else:
-    print("** You can't move there **")
+    print("** Walls are hard, stop walking into them! **")
     continue
 
   if player == door:
-    print("You WIN!")
+    print("You escaped!")
     break
   elif player == monster:
-    print("You're eaten!")
+    print("You were eaten by the grue!")
     break

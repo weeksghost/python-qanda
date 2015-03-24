@@ -35,7 +35,6 @@ class Quiz:
         pass
 
     def total_correct(self):
-        # return total correct answers
         total = 0
         for answer in self.answers:
             if answer[0]:
@@ -44,7 +43,7 @@ class Quiz:
 
     def summary(self):
         print("You got {} out of {} right.".format(
-                self.toatal_correct(), len(self.questions)
+            self.total_correct(), len(self.questions)
         ))
         print("It took you {} seconds total.".format(
             (self.end_time-self.start_time).seconds

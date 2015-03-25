@@ -19,6 +19,9 @@ def get_locations():
 
 
 def move_player(player, move):
+
+  player = {}
+
   x, y = player
 
   if move == 'LEFT':

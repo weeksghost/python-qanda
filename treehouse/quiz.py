@@ -18,6 +18,7 @@ class Quiz:
 
     def take_quiz(self):
         # log start time
+        start_time = datetime.datetime.now()
         # ask questions
         # log if correct
         # log end time
@@ -25,14 +26,23 @@ class Quiz:
         pass
 
     def ask(self, question):
+        correct = False
         # log start time
+        start_time = datetime.datetime.now()
         # capture answer
+        answer = input(question.text + ' = ')
         # check answer
-        # log end time
+        if answer in str(question.answer):
         # if right, send back True
+            correct = True
+        else:
+
         # otherwise send back False
+        # log end time
+        end_time = datetime.datetime.now()
+        return self.summary()
         # send back elapsed time
-        pass
+
 
     def total_correct(self):
         total = 0

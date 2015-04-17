@@ -1,45 +1,32 @@
-from bs4 import BeautifulSoup
+# Based on https://www.youtube.com/watch?v=SFas42HBtMg
+# Page Spider
+
+import urlparse
 import requests
-import re
-from time import sleep
-from collections import Counter
-from nltk.corpus import stopwords
-import pandas
-#%maplotlib inline
+from bs4 import BeautifulSoup
 
+url = 'http://broadway.com'
 
-def text_cleaner(website):
-    try:
-        site = requests.get(website)
-        content = site.text
-    except:
-        raise Exception("Website not found!")
+urls = [url]
+visted = [url]
 
-    soup_obj = BeautifulSoup(content)
+while len(urls) > 0:
+  try:
+    request = requests.get(urls[0])
+    htmltext = request.text
+  except:
+    print(urls[0])
+  soup = BeautifulSoup(htmltext)
 
-    for script in soup_obj(["script", "style"]):
-        script.extract()
-    text = soup_obj.get_text()
-    lines = (line.strip() for line in text.splitlines())
-    chunks = (phrase.strip() for line in lines for phrase in line.split("  "))
+  urls.pop(0)
+  print(str(len(urls)) + ' links checked out okay')
 
-
-    def chunk_space(chunk):
-        chunk_out = chunk + ' '
-        return chunk_out
-
-    text = ''.join(chunk_space(chunk) for chunk in chunks if chunk).encode('utf-8')
-
-    try:
-        text = text.decode('unicode_escape').encode('ascii', 'ignore')
-    except:
-        return
-
-    text = re.sub("[^a-zA-Z.+3]"," ", text)
-    text = text.lower().split()
-    stop_words = set(stopwords.words("english"))
-    text = [w for w in text if not w in stop_words]
-    text = list(set(text))
-    return text
-
-text_cleaner("http://www.workbridgeassociates.com/tech-jobs/new-york-ny/other/lead-qa-test-engineer/224196")
+  for tag in soup.findAll('a', href=True):
+    tag['href'] = urlparse.urljoin(url, tag['href'])
+    if url in tag['href'] and tag['href'] not in visted:
+      urls.append(tag['href'])
+      visted.append(tag['href'])
+  for link in visted:
+    response = requests.get(link)
+    if response.status_code != 200:
+      print('[%s] %s' % response.status_code, link)

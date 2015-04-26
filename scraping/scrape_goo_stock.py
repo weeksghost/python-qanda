@@ -20,5 +20,8 @@ while index < len(newsymbols):
 
   request = requests.get(url)
   htmltext = request.text
-  print(htmltext.split()[-1])
+  print(type(htmltext.split()[-1]))
+  #if htmltext.split()[-1] != type(int):
+  #  pass
+  #print(htmltext.split()[-1])
   index += 1

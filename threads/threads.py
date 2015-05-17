@@ -4,10 +4,11 @@ from threading import Thread
 
 
 def thread(url):
-    base = 'http://finance.yahoo.com/q?s=%s' % url
+    base = 'http://finance.yahoo.com/q?s='+sym
     regex = '<span id="yfs_l84_'+url.lower()+'">(.+?)</span>'
 
-#    print(base)
+    print(url)
+    #print(base)
 
 #    pattern = re.compile(regex)
 #    r = requests.get(base)
@@ -18,11 +19,12 @@ def thread(url):
 symlist = open('threads/symbols2.txt').read()
 symlist = symlist.replace(' ', '').strip('\n').split(',')
 
-print(symlist)
+#print(symlist)
 
 threadlist = []
+
 for sym in symlist:
-  needle = Thread(target=thread, args=(sym,))
+  needle = Thread(target=thread,args=(sym,))
   needle.start()
   threadlist.append(needle)
 

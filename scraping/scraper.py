@@ -5,7 +5,7 @@ import urlparse
 import requests
 from bs4 import BeautifulSoup
 
-url = 'http://broadway.com'
+url = 'http://broadway.com/videos'
 
 urls = [url]
 visted = [url]
@@ -19,14 +19,14 @@ while len(urls) > 0:
   soup = BeautifulSoup(htmltext)
 
   urls.pop(0)
-  print(str(len(urls)) + ' links checked out okay')
+  print(str(len(urls)))
 
   for tag in soup.findAll('a', href=True):
     tag['href'] = urlparse.urljoin(url, tag['href'])
     if url in tag['href'] and tag['href'] not in visted:
       urls.append(tag['href'])
       visted.append(tag['href'])
-  for link in visted:
-    response = requests.get(link)
-    if response.status_code != 200:
-      print('[%s] %s' % response.status_code, link)
+#  for link in visted:
+#    response = requests.get(link)
+#    if response.status_code != 200:
+#      print('[%s] %s' % response.status_code, link)

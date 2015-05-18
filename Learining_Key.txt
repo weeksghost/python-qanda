@@ -12,6 +12,19 @@ repr() —- Return a string containing a printable representation of an object.
 
 ====================================================================================
 
+MATH:
+
+The % (modulo) operator yields the remainder from the division of the first argument by the second.
+
+Example 1:  6 % 2 evaluates to 0 because there's no remainder if 6 is divided by 2 (3 times).
+
+Example 2: 7 % 2 evaluates to 1 because there's a remainder of 1 when 7 is divided by 2 (3 times).
+
+To summarize. It returns the remainder of a division operation, or 0 if there is no remainder. So 6 % 2 means find the remainder of 6 divided by 2.
+
+
+====================================================================================
+
 REGULAR EXPRESSION:
 
 . (dot) any char

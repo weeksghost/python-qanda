@@ -1,0 +1,7 @@
+For every prefix p we have to decide whether or not a number A[p] has appeared before. If
+the number A[p] has appeared before then we can consider smaller indices. Otherwise, it is
+not possible to obtain a smaller prefix than A[0..p].
+
+Using the above reasoning we can iterate through array A using decreasing prefixes and
+check whether the value A[p] has appeared before index p. Finally, we will find a prefix that
+cannot be decreased, and that will be the result.

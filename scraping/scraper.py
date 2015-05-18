@@ -1,32 +1,30 @@
-# Based on https://www.youtube.com/watch?v=SFas42HBtMg
-# Page Spider
-
-import urlparse
 import requests
 from bs4 import BeautifulSoup
+import urlparse
+import mechanize
 
-url = 'http://broadway.com/videos'
 
+url = "http://warpaintwarpaint.com/home/"
+br = mechanize.Browser()
 urls = [url]
-visted = [url]
-
+visited = [url]
 while len(urls) > 0:
-  try:
-    request = requests.get(urls[0])
-    htmltext = request.text
-  except:
-    print(urls[0])
-  soup = BeautifulSoup(htmltext)
+    try:
+        br.open(urls[0])
+        urls.pop(0)
+        for link in br.links():
+            newurl = urlparse.urljoin(link.base_url, link.url)
+            b1 = urlparse.urlparse(newurl).hostname
+            b2 = urlparse.urlparse(newurl).path
+            newurl = 'http://{}{}'.format(b1, b2)
 
-  urls.pop(0)
-  print(str(len(urls)))
+            if newurl not in visited and \
+            urlparse.urlparse(url).hostname in newurl:
+                urls.append(newurl)
+                visited.append(newurl)
+                print(newurl)
 
-  for tag in soup.findAll('a', href=True):
-    tag['href'] = urlparse.urljoin(url, tag['href'])
-    if url in tag['href'] and tag['href'] not in visted:
-      urls.append(tag['href'])
-      visted.append(tag['href'])
-#  for link in visted:
-#    response = requests.get(link)
-#    if response.status_code != 200:
-#      print('[%s] %s' % response.status_code, link)
+    except:
+        print('error!')
+        urls.pop(0)
+

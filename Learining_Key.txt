@@ -25,6 +25,48 @@ To summarize. It returns the remainder of a division operation, or 0 if there is
 
 ====================================================================================
 
+DATETIME
+
+Working with datetime:
+
+    datetime.datetime.now()
+
+    yields:
+
+    datetime.datetime(2015, 5, 19, 9, 25, 20, 188834) # At the time this was composed
+
+    breakdown - (2015, 5, 19, 9, 25, 20, 188834)
+
+                  |    |   |  |   |   |     |
+
+                  Y    M   D  H   m   s  microsec
+
+Extracting time data:
+
+    microsecond = now.microsecond
+    second = now.second
+    minute = now.minute
+    hour = now.hour
+    day = now.day
+    year = now.year
+
+
+TIMESTAMPS
+
+Get POSIX timestamp
+
+Python 2 - Seems like I need to use another module and create an new object
+
+timestamps = time.time()
+
+Python 3 - Can reuse same datetime object
+
+now = datetime.datetime.now()
+timestamps = datetime.datetime.timestamp(now)
+
+
+====================================================================================
+
 REGULAR EXPRESSION:
 
 . (dot) any char

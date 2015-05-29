@@ -6,7 +6,7 @@ def exec_cmd(device, cmd):
     for _ in xrange(1, 101):
         try:
 
-            # Initialize device(s)
+            # Initialize device
             device.close()
             device.open()
             device.flushInput()
@@ -18,6 +18,11 @@ def exec_cmd(device, cmd):
             port = device.port
 
             # Assign channels to tuples as mock code for referencing channels
+
+            """**************************************************
+            Use get_text_log(device) function to get details on device
+            """
+
             channels = 0,1
 
             # Send command to device
@@ -46,8 +51,13 @@ def exec_cmd(device, cmd):
             # Mock code for recieving device
             recv = device.readline()
 
+            # If a packet doesn't get through, print nothing
             if recv != send:
                 print('')
+
+            """**************************************************
+            Use get_text_log(device) function to get details on device
+            """
 
             if send in channels[0]:
                 print('Dev B: [{}] Chan 0 Received msg: Hello world 1'.format(

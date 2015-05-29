@@ -1,0 +1,19 @@
+We have 2 devices under test and they are connecting to COM4 and COM5 serial ports on the PC.
+
+Write a python script that will test the connection between device A and B, on both channels
+(Chan 0 and Chan 1).
+
+The test will try to send 100 packets on each channel from A to B and then B to A.
+
+Catch the number of corrupted packets and number of packets lost.
+
+Note: A receiving device may not know explicitly when a packet is lost.
+
+We’d like to see you try to induce errors if you can.
+
+Find the edge cases.
+
+Document your coding, but also prepare a high level test plan for this and other tests
+you can infer we might need.
+
+Create a reporting/tracking structure for the execution and maintenance of these tests.
